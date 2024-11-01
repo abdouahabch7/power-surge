@@ -1,6 +1,6 @@
 // Load the power cell image
 const powerCellImage = new Image();
-powerCellImage.src = 'powercell.png'; // Adjust the path if necessary
+powerCellImage.src = 'https://github.com/abdouahabch7/power-surge/blob/main/powercell.png?raw=true'; // Adjust the path if necessary
 
 // Canvas setup
 const canvas = document.getElementById("gameCanvas");
