@@ -1,6 +1,6 @@
 // Load the power cell image
 const powerCellImage = new Image();
-powerCellImage.src = 'powerCell.png'; // Adjust the path if necessary
+powerCellImage.src = 'powercell.png'; // Adjust the path if necessary
 
 // Canvas setup
 const canvas = document.getElementById("gameCanvas");
