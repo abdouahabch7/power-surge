@@ -120,7 +120,7 @@ setInterval(generatePowerCells, respawnInterval);
 
 // Decrease health over time
 setInterval(() => {
-    player.health -= 5; // Decrease health by 5 every second
+    player.health -= 0; // Decrease health by 5 every second
     if (player.health <= 0) {
         window.location.href = "game-over.html"; // Redirect to game over screen
     }
