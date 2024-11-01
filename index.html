@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black; /* Dark background for retro effect */
+        }
+        canvas {
+            display: block; /* Make canvas fill the screen */
+        }
+        #menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ffcc;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive; /* Retro font */
+            z-index: 10;
+        }
+        button {
+            background-color: #00ffcc;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 10px;
+            font-family: 'Press Start 2P', cursive; /* Retro font */
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="menuCanvas"></canvas>
+    <div id="menu">
+        <h1>Power Surge</h1>
+        <button id="startGame">Start Game</button>
+        <button id="exit">Exit</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('menuCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Function to create retro pixelated effect
+        function applyRetroEffect() {
+            ctx.filter = 'blur(4px)'; // Add blur effect
+            ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+            ctx.filter = 'none'; // Reset filter
+        }
+
+        // Function to draw the menu
+        function drawMenu() {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+            ctx.fillStyle = 'rgba(0, 255, 204, 0.5)'; // Semi-transparent color
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Overlay effect
+
+            ctx.fillStyle = '#00ffcc'; // Text color
+            ctx.font = '40px "Press Start 2P", cursive';
+            ctx.fillText("Power Surge", canvas.width / 2, canvas.height / 2 - 30);
+            ctx.font = '20px "Press Start 2P", cursive';
+            ctx.fillText("Press Start to Play", canvas.width / 2, canvas.height / 2 + 30);
+        }
+
+        // Start game on button click
+        document.getElementById('startGame').addEventListener('click', () => {
+            window.location.href = 'game.html'; // Redirect to game
+        });
+
+        // Exit the game
+        document.getElementById('exit').addEventListener('click', () => {
+            window.close(); // Close the window
+        });
+
+        // Animation loop
+        function animate() {
+            drawMenu();
+            applyRetroEffect(); // Apply the retro effect
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+    </script>
+</body>
+</html>
